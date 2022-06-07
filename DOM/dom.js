@@ -1,13 +1,13 @@
-console.log(document.forms);
-const title = document.getElementById('header-title').innerHTML = 'Title is Changed'
-document.getElementById('header-title').style.color = 'yellow'
-document.getElementById('main-header').style.border = 'solid 5px black'
+// console.log(document.forms);
+// const title = document.getElementById('header-title').innerHTML = 'Title is Changed'
+// document.getElementById('header-title').style.color = 'yellow'
+// document.getElementById('main-header').style.border = 'solid 5px black'
 
-document.getElementsByClassName('title')[0].innerHTML = '<b>ADD ITEM</b>'
-document.getElementsByClassName('title')[0].style.color = 'green'
+// document.getElementsByClassName('title')[0].innerHTML = '<b>ADD ITEM</b>'
+// document.getElementsByClassName('title')[0].style.color = 'green'
 
 
-console.log("Header title is now: " + title);
+// console.log("Header title is now: " + title);
 
 // var items = document.getElementsByClassName('list-group-item');
 // items[1].textContent = 'HELLO 2'
@@ -51,35 +51,100 @@ console.log("Header title is now: " + title);
 
 // Create a div 
 
-var newDiv = document.createElement('div');
+// var newDiv = document.createElement('div');
 
-newDiv.className = 'HELLo';
-newDiv.id = 'HELLo 1';
-newDiv.setAttribute('title', 'Hello DIV');
+// newDiv.className = 'HELLo';
+// newDiv.id = 'HELLo 1';
+// newDiv.setAttribute('title', 'Hello DIV');
 
-var newDivText = document.createTextNode('HEllo');
+// var newDivText = document.createTextNode('HEllo');
 
-newDiv.appendChild(newDivText);
+// newDiv.appendChild(newDivText);
 
-var container = document.querySelector('header .container');
-var h1=document.querySelector('header h1');
+// var container = document.querySelector('header .container');
+// var h1=document.querySelector('header h1');
 
-console.log(newDiv);
-container.insertBefore(newDiv,h1);
+// console.log(newDiv);
+// container.insertBefore(newDiv,h1);
 
-//before Item 1
+// before Item 1
 
-var newitem = document.createElement('h3');
+// var newitem = document.createElement('div');
 
-newitem.classname = 'list-group-item1';
+// newitem.classname = 'list-group-item1';
 
-var newitemText = document.createTextNode('Item 0');
+// var newitemText = document.createTextNode('HEllo');
 
-newitem.appendChild(newitemText);
+// newitem.appendChild(newitemText);
 
-var ul = document.querySelector('#main');
-var li1 = document.querySelector('#items');
+// var ul = document.querySelector('#main');
+// var li1 = document.querySelector('#items');
 
-ul.insertBefore(newitem, li1);
+// ul.insertBefore(newitem, li1);
 
 // console.log(newitem);
+
+var form = document.getElementById('addForm');
+var itemList = document.getElementById('items');
+
+// Form submit event
+form.addEventListener('submit', addItem);
+// Delete event
+itemList.addEventListener('click', removeItem);
+
+
+// Add item
+function addItem(e){
+  e.preventDefault();
+
+  // Get input value
+  var newItem = document.getElementById('item').value;
+
+  // Create new li element
+  var li = document.createElement('li');
+  // Add class
+  li.className = 'list-group-item';
+  // Add text node with input value
+  li.appendChild(document.createTextNode(newItem));
+
+
+  // Create edit button 
+  var editBtn = document.createElement('button');
+
+  // Add classes to del button
+  editBtn.className = 'btn btn-safe btn-sm float-right edit';
+
+  // Append text node
+  editBtn.appendChild(document.createTextNode('Edit'));
+
+  // Append button to li
+  li.appendChild(editBtn);
+
+  // Append li to list
+  itemList.appendChild(li);
+
+  // Create del button element
+  var deleteBtn = document.createElement('button');
+
+  // Add classes to del button
+  deleteBtn.className = 'btn btn-danger btn-sm float-right delete';
+
+  // Append text node
+  deleteBtn.appendChild(document.createTextNode('X'));
+
+  // Append button to li
+  li.appendChild(deleteBtn);
+
+  // Append li to list
+  itemList.appendChild(li);
+}
+
+// Remove item
+function removeItem(e){
+  if(e.target.classList.contains('delete')){
+    if(confirm('Are You Sure?')){
+      var li = e.target.parentElement;
+      itemList.removeChild(li);
+    }
+  }
+}
