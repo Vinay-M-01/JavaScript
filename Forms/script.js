@@ -8,7 +8,7 @@ function sendData(e)
         "name" : document.getElementById("fname").value,
         "Email" : document.getElementById("email").value,
         "phone": document.getElementById("phone").value,
-        "meeting time": document.getElementById("birthdaytime").value
+        "meetingtime": document.getElementById("birthdaytime").value
     }
     
     let serializedObj = JSON.stringify(newObj);
@@ -22,3 +22,11 @@ function sendData(e)
 //     localStorage.setItem('The Meeting time is',document.getElementById("birthdaytime").value)
 // 
 }
+
+let reloadObj = localStorage.getItem("newdata")
+let reloadString = JSON.parse(reloadObj)
+
+document.getElementById("fname").value = reloadString.name
+document.getElementById("email").value = reloadString.Email
+document.getElementById("phone").value = reloadString.phone
+document.getElementById("birthdaytime").value = reloadString.meetingtime
