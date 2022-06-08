@@ -2,6 +2,27 @@ let formName = document.getElementsByTagName("form")[0]
 formName.addEventListener('submit',sendData)
 let count =0;
 
+//Task 12 - deliverable 3
+document.addEventListener('DOMContentLoaded', function(){
+    for (let i = 0; i < localStorage.length; i++) {
+        
+        if(i==localStorage.length-1)
+
+        {   
+            console.log(i)
+            const keyval = localStorage.key(i);
+            
+            const val = localStorage.getItem(keyval)
+            let newVal = JSON.parse(val)
+            
+            document.getElementById("fname").value = newVal.name
+            console.log(newVal.name)
+        }
+    
+    }
+
+});
+
 function sendData(e)
 {
     count+=1
