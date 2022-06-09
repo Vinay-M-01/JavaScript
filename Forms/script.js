@@ -36,9 +36,9 @@ function sendData(e)
 
     }
     let serializedObj = JSON.stringify(newObj)
-    let newName = localStorage.setItem(newObj.count, serializedObj)
+    let newName = localStorage.setItem(newObj.name, serializedObj)
 
-    let reloadObj = localStorage.getItem(newObj.count)
+    let reloadObj = localStorage.getItem(newObj.name)
     let reloadString = JSON.parse(reloadObj)
 
     let li = document.createElement('li')
@@ -48,6 +48,62 @@ function sendData(e)
 
     let getId = document.querySelector('#users')
     getId.appendChild(li)
+
+    //function with delete button
+
+    function deleteButton()
+    {
+        let button = document.createElement('button');
+        button.innerHTML = 'Delete';
+        button.className = 'deleteItem';
+        button.id = 'delete';
+        button.style.backgroundColor = 'red';
+        button.style.border = 'solid 1px white';
+        button.setAttribute('title', 'detele user details');
+        li.appendChild(button);
+
+        return button
+    }
+
+    let delbtn = deleteButton()
+
+    delbtn.addEventListener('click', function()
+    {
+        if(confirm('Are you sure?'))
+        {
+            getId.removeChild(li);
+            localStorage.removeItem(reloadString.name);
+
+        }
+    })
+
+    let editBtn = document.createElement('button');
+    editBtn.innerHTML = 'Edit';
+    editBtn.className = 'editbtn';
+    editBtn.id = 'edit';
+    editBtn.style.backgroundColor = 'yellow';
+    editBtn.style.border = 'solid 1px white';
+    editBtn.setAttribute('title', 'edit user details');
+    li.appendChild(editBtn);
+
+    editBtn.addEventListener('click', function()
+    {
+        let getUserName = prompt('User Name : ')
+        let getUserEmail = prompt('User Email :')
+        li.textContent = 'Name is : ' + getUserName + 'Email is : ' + getUserEmail + '   ';
+        let delbtnn = deleteButton();
+
+        delbtnn.addEventListener('click', function()
+        {
+            if(confirm('Are you sure?'))
+            {
+               getId.removeChild(li);
+                localStorage.removeItem(reloadString.name);
+
+            }
+        })
+    })
+
 
 //     localStorage.setItem('The Name is',document.getElementById("fname").value)
 //     localStorage.setItem('The Email is',document.getElementById("email").value)
