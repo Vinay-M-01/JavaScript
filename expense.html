@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="color: rgb(5, 5, 84);font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; "><b>Expense Tracker</b></h1>
+    <form>
+        <label for="ExpenseName" style="font-size: 20px; font-family: 'Times New Roman', Times, serif;">Enter the amount: </label>
+        <input type="number" id="ExpenseName" name="ExpenseName" value="200" style="padding:3px; border: solid 2px;">
+
+        <label for="Description" style="font-size: 20px; font-family: 'Times New Roman', Times, serif;">Choose Description:</label>
+        <input type="text" id="Description" name="Description" style="padding:3px; border: solid 2px;">
+
+        <label for="category" style="font-size: 20px; font-family: 'Times New Roman', Times, serif;">Choose Category:</label>
+        <select id="category" name="category" style="padding:3px; border: solid 2px;">
+            <option value="Movies">Movies</option>
+            <option value="On vacation">On vacation</option>
+            <option value="Diesel">Diesel</option>
+            <option value="Food" selected>Food</option>
+        </select>
+        <input type="submit" id="submitButton" value="Add Expense" style="background-color: rgb(66, 199, 222);font-size: medium;">
+    </form>
+    <ul class="mainList" id="MainList">
+
+    </ul>
+    
+    <script src = 'expensetracker.js'></script>
+</body>
+</html>
