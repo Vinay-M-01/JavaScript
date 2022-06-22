@@ -39,6 +39,7 @@ function myFunction(e){
         let button = document.createElement('button');
         button.innerHTML = 'Delete';
         button.className = 'deleteItem';
+        button.style.backgroundColor = 'red';
         button.id = 'delete';
         li.appendChild(button);
         return button
